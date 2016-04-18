@@ -25,12 +25,13 @@ CREATE TABLE `contact` (
   `firstName` varchar(100) default NULL,
   `lastName` varchar(100) default NULL,
   `phone` varchar(100) default NULL,
+  `email` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Data for the table `contact` */
 
-insert  into `contact`(`id`,`firstName`,`lastName`,`phone`) values (3,'Most Important ','Person','093 55 88 99 22'),(4,'Most  Likely','Person','060 88 77 00 77'),(5,'VIP','Person','099 33 77 22 66'),(14,'Anna','Malina','1234561254'),(15,'Alina','Malina','1233121321');
+insert  into `contact`(`id`,`firstName`,`lastName`,`phone`,`email`) values (3,'Most Important ','Person','093 55 88 99 22','a1@gmail.com'),(4,'Most  Likely','Person','060 88 77 00 77','a2@gmail.com'),(5,'VIP','Person','099 33 77 22 66','a3@gmail.com');
 
 /*Table structure for table `employee` */
 
