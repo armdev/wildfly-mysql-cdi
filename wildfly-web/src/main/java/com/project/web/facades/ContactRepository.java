@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 @ApplicationScoped
 public class ContactRepository {
 
-   // @Inject
+    // @Inject
     @PersistenceContext(unitName = "primary")
     private EntityManager em;
 
@@ -28,5 +28,16 @@ public class ContactRepository {
 
         criteria.select(contact).orderBy(cb.desc(contact.get("id")));
         return em.createQuery(criteria).getResultList();
+    }
+
+    public Contact findByEmail(String email) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Contact> criteria = cb.createQuery(Contact.class);
+        Root<Contact> contact = criteria.from(Contact.class);
+        // Swap criteria statements if you would like to try out type-safe criteria queries, a new
+        // feature in JPA 2.0
+        // criteria.select(member).where(cb.equal(member.get(Member_.email), email));
+        criteria.select(contact).where(cb.equal(contact.get("email"), email));
+        return em.createQuery(criteria).getSingleResult();
     }
 }

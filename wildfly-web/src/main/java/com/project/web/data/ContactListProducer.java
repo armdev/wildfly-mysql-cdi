@@ -1,4 +1,3 @@
-
 package com.project.web.data;
 
 import com.project.web.entities.Contact;
@@ -20,20 +19,24 @@ public class ContactListProducer {
 
     private List<Contact> contacts;
 
-    // @Named provides access the return value via the EL variable name "members" in the UI (e.g.
-    // Facelets or JSP view)
+    public ContactListProducer() {
+        System.out.println("Called constructor ");
+    }
+
+    @PostConstruct
+    public void retrieveAllMembersOrderedByName() {
+        System.out.println("Called list ");
+        contacts = contactRepository.findAll();
+    }
+
     @Produces
     @Named
     public List<Contact> getContacts() {
         return contacts;
     }
 
-    public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Contact member) {
+    public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Contact contact) {
         retrieveAllMembersOrderedByName();
     }
 
-    @PostConstruct
-    public void retrieveAllMembersOrderedByName() {
-        contacts = contactRepository.findAll();
-    }
 }

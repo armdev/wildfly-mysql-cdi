@@ -18,29 +18,37 @@
                         <h:panelGroup rendered="#{empty contacts}">
                             <em>No registered contacts.</em>
                         </h:panelGroup>
-                        
+
                         <h:dataTable var="list" value="#{contacts}"
                                      rendered="#{not empty contacts}"
                                      styleClass="simpletablestyle">
-                            
+
                             <h:column>
                                 <f:facet name="header">Id</f:facet>
                                     #{list.id}
                             </h:column>
-                            
+
                             <h:column>
                                 <f:facet name="header">Name</f:facet>
                                     #{list.firstName}
                             </h:column>
-                            
+
                             <h:column>
                                 <f:facet name="header">Last Name</f:facet>
                                     #{list.lastName}
                             </h:column>
-                            
+
                             <h:column>
                                 <f:facet name="header">Phone #</f:facet>
                                     #{list.phone}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">E-mail #</f:facet>
+                                    #{list.email}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">REST URL</f:facet>
+                                <a href="#{request.contextPath}/rest/contacts/#{list.id}" target="_blank">/rest/contacts/#{list.id}</a>
                             </h:column>
                         </h:dataTable>
                     </div>

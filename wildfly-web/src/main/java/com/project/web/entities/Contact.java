@@ -29,7 +29,7 @@ public class Contact implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Size(max = 100)
     @Column(name = "firstName")
     private String firstName;
@@ -40,19 +40,21 @@ public class Contact implements Serializable {
     @Size(max = 100)
     @Column(name = "phone")
     private String phone;
+    @Column(name = "email")
+    private String email;
 
     public Contact() {
     }
 
-    public Contact(Integer id) {
+    public Contact(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,6 +82,16 @@ public class Contact implements Serializable {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -104,5 +116,5 @@ public class Contact implements Serializable {
     public String toString() {
         return "com.project.web.entities.Contact[ id=" + id + " ]";
     }
-    
+
 }
